@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carolina's Birthday Duval Crawl 🦩 Key West</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF3D3D;
+    --gold: #FFBE00;
+    --teal: #00C9B1;
+    --deep: #1A0533;
+    --mid: #2D1050;
+    --cream: #FFF8F0;
+    --pink: #FF6EB4;
+    --purple: #C084FC;
+    --lime: #A3FF4A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: radial-gradient(ellipse at 0% 0%, rgba(192,100,252,0.12) 0%, transparent 50%),
+                      radial-gradient(ellipse at 100% 100%, rgba(0,201,177,0.1) 0%, transparent 50%);
+  }
+
+  /* === HEADER === */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, #3D0070 0%, #6B00B6 40%, #C2006E 100%);
+    padding: 40px 20px 30px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% -10%, rgba(255,190,0,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 100%, rgba(0,201,177,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 100%, rgba(255,61,61,0.2) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .palm-left, .palm-right {
+    position: absolute;
+    top: 0;
+    font-size: 80px;
+    opacity: 0.35;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .palm-left { left: -10px; transform: rotate(-15deg); }
+  .palm-right { right: -10px; transform: rotate(15deg) scaleX(-1); }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(52px, 12vw, 88px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 60px rgba(255,190,0,0.6), 0 2px 0 rgba(0,0,0,0.3);
+    margin-bottom: 4px;
+  }
+
+  .hero h1 span {
+    color: var(--gold);
+    display: block;
+    text-shadow: 0 0 40px rgba(255,190,0,0.8);
+  }
+
+  .hero-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(20px, 5vw, 28px);
+    color: #FFB3D9;
+    margin: 8px 0 16px;
+    text-shadow: 0 0 20px rgba(255,110,180,0.5);
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(255,248,240,0.6);
+    text-transform: uppercase;
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* === PROGRESS BAR === */
+  .progress-wrap {
+    background: rgba(61,0,112,0.85);
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,190,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .progress-bar-outer {
+    height: 7px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--lime), var(--gold));
+    border-radius: 99px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 0%;
+    box-shadow: 0 0 10px rgba(163,255,74,0.4);
+  }
+
+  /* === MAIN CONTENT === */
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+  }
+
+  /* === SECTION LABELS === */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin: 32px 0 12px;
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(163,255,74,0.2);
+  }
+
+  /* === STOP CARDS === */
+  .stop-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 16px;
+    margin-bottom: 14px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stop-card:hover {
+    border-color: rgba(255,190,0,0.4);
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .stop-card.done {
+    opacity: 0.5;
+    border-color: rgba(0,201,177,0.35);
+    background: rgba(0,201,177,0.05);
+  }
+
+  .stop-card.done .stop-name {
+    text-decoration: line-through;
+    text-decoration-color: var(--teal);
+  }
+
+  .stop-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 16px 0 0 16px;
+  }
+
+  .stop-inner {
+    padding: 16px 16px 16px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  /* Checkbox */
+  .stop-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .stop-check input {
+    display: none;
+  }
+
+  .check-box {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 14px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .check-box:hover {
+    border-color: var(--gold);
+    background: rgba(255,209,102,0.08);
+  }
+
+  input:checked ~ .check-box {
+    background: var(--teal);
+    border-color: var(--teal);
+    box-shadow: 0 0 12px rgba(6,182,164,0.4);
+  }
+
+  /* Stop content */
+  .stop-content { flex: 1; min-width: 0; }
+
+  .stop-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+
+  .stop-time {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+
+  .stop-emoji { font-size: 16px; flex-shrink: 0; }
+
+  .stop-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--cream);
+    line-height: 1;
+    flex: 1;
+  }
+
+  .stop-type {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,248,240,0.4);
+    padding: 2px 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 99px;
+    flex-shrink: 0;
+  }
+
+  .stop-desc {
+    font-size: 13px;
+    color: rgba(255,248,240,0.65);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .stop-order {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--coral);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Tags row */
+  .stop-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    border-radius: 99px;
+    text-transform: uppercase;
+  }
+
+  .tag-cash { background: rgba(255,61,61,0.2); color: #FF7070; border: 1px solid rgba(255,61,61,0.4); }
+  .tag-free { background: rgba(163,255,74,0.15); color: var(--lime); border: 1px solid rgba(163,255,74,0.35); }
+  .tag-paid { background: rgba(255,190,0,0.15); color: var(--gold); border: 1px solid rgba(255,190,0,0.4); }
+  .tag-music { background: rgba(192,132,252,0.2); color: #d8a8ff; border: 1px solid rgba(192,132,252,0.4); }
+  .tag-id21 { background: rgba(255,110,180,0.15); color: var(--pink); border: 1px solid rgba(255,110,180,0.4); }
+  .tag-card { background: rgba(255,190,0,0.12); color: var(--gold); border: 1px solid rgba(255,190,0,0.25); }
+
+  /* Map link */
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .map-link:hover { color: var(--gold); }
+
+  /* Challenge banner */
+  .challenge-banner {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: linear-gradient(135deg, rgba(192,132,252,0.18), rgba(255,110,180,0.12));
+    border: 1px solid rgba(192,132,252,0.4);
+    border-radius: 10px;
+    font-size: 12px;
+    color: #e4c4ff;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .challenge-banner .ch-icon { flex-shrink: 0; font-size: 15px; }
+
+  /* === TRANSIT CARDS === */
+  .transit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgba(255,248,240,0.4);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .transit-line {
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    margin-left: 11px;
+    border-radius: 1px;
+  }
+
+  /* === SCORE BOARD === */
+  .scoreboard {
+    background: linear-gradient(135deg, rgba(255,190,0,0.1), rgba(0,201,177,0.1));
+    border: 1px solid rgba(255,190,0,0.35);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .scoreboard h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .scoreboard p {
+    font-size: 12px;
+    color: rgba(255,248,240,0.55);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .score-display {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 64px;
+    color: var(--lime);
+    line-height: 1;
+    margin: 10px 0 4px;
+    text-shadow: 0 0 40px rgba(163,255,74,0.5);
+  }
+
+  /* === CHALLENGE SECTION === */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 400px) {
+    .challenges-grid { grid-template-columns: 1fr; }
+  }
+
+  .challenge-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+
+  .challenge-card:hover {
+    border-color: rgba(192,132,252,0.6);
+    background: rgba(192,132,252,0.1);
+  }
+
+  .challenge-card.ch-done {
+    border-color: rgba(0,201,177,0.5);
+    background: rgba(0,201,177,0.08);
+    opacity: 0.7;
+  }
+
+  .challenge-card.ch-done::after {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    color: var(--teal);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .ch-pts {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--purple);
+    margin-bottom: 5px;
+  }
+
+  .challenge-card.ch-done .ch-pts { color: var(--teal); }
+
+  .ch-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+
+  .ch-desc {
+    font-size: 11px;
+    color: rgba(255,248,240,0.5);
+    line-height: 1.4;
+  }
+
+  /* === TRANSPORT CARDS === */
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 480px) {
+    .transport-grid { grid-template-columns: 1fr; }
+  }
+  .transport-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 14px 12px;
+    text-align: center;
+    transition: all 0.25s ease;
+  }
+  .transport-card:hover {
+    border-color: rgba(255,190,0,0.4);
+    background: rgba(255,190,0,0.07);
+    transform: translateY(-2px);
+  }
+  .transport-icon { font-size: 28px; margin-bottom: 7px; display: block; }
+  .transport-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .transport-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 99px;
+    margin-bottom: 6px;
+  }
+  .badge-rec { background: rgba(163,255,74,0.2); color: var(--lime); border: 1px solid rgba(163,255,74,0.4); }
+  .badge-free { background: rgba(0,201,177,0.2); color: var(--teal); border: 1px solid rgba(0,201,177,0.4); }
+  .badge-fun { background: rgba(255,110,180,0.2); color: var(--pink); border: 1px solid rgba(255,110,180,0.4); }
+  .transport-desc {
+    font-size: 11px;
+    color: rgba(255,248,240,0.6);
+    line-height: 1.5;
+  }
+  .transport-cost {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-top: 5px;
+  }
+
+  /* === TABS === */
+  .tab-bar {
+    display: flex;
+    gap: 6px;
+    margin: 32px 0 16px;
+    border-bottom: 2px solid rgba(255,255,255,0.08);
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 14px 10px;
+    border: none;
+    background: none;
+    color: rgba(255,248,240,0.4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+    border-radius: 6px 6px 0 0;
+  }
+  .tab-btn:hover { color: var(--cream); background: rgba(255,255,255,0.04); }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    background: rgba(255,190,0,0.06);
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .tip-box {
+    background: rgba(255,190,0,0.08);
+    border: 1px solid rgba(255,190,0,0.22);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: rgba(255,248,240,0.7);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .tip-box strong { color: var(--gold); }
+
+  /* === CONFETTI BURST === */
+  .confetti-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    animation: confettiFall 2s ease-in forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* === TOAST === */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--teal);
+    color: var(--deep);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 99px;
+    z-index: 1000;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(6,182,164,0.4);
+    letter-spacing: 0.5px;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    color: rgba(255,248,240,0.25);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 12px;
+  }
+
+  /* === COMPLETION BANNER === */
+  .complete-banner {
+    display: none;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, rgba(255,209,102,0.1), rgba(6,182,164,0.1));
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    margin: 20px 0;
+  }
+
+  .complete-banner h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .complete-banner p {
+    font-size: 14px;
+    color: rgba(255,248,240,0.7);
+  }
+
+  /* Pulse animation on new complete */
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,209,102,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(255,209,102,0); }
+  }
+
+  .just-checked { animation: pulse-gold 0.6s ease; }
+
+  .tip-box {
+    background: rgba(255,209,102,0.06);
+    border: 1px solid rgba(255,209,102,0.18);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: rgba(255,248,240,0.6);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .tip-box strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="confetti-container" id="confetti"></div>
+
+<div class="toast" id="toast"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="palm-left">🌴</div>
+  <div class="palm-right">🌴</div>
+  <p class="eyebrow">🛳️ Virgin Voyages Port Day · Key West, FL</p>
+  <h1>Carolina's Birthday<span>Duval Crawl 🦩</span></h1>
+  <p class="hero-sub">Key West, Florida · The Self-Guided Edition</p>
+  <div class="hero-meta">
+    <span>📅 Friday, June 5</span>
+    <span>🕘 9:30am – 3:30pm</span>
+    <span>👯 4 People</span>
+    <span>🚢 Back by 4pm</span>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>🗺️ Crawl Progress</span>
+    <span id="prog-text">0 of 8 stops</span>
+  </div>
+  <div class="progress-bar-outer">
+    <div class="progress-bar-inner" id="progress-bar"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- SCORE -->
+  <div class="scoreboard">
+    <h3>🏆 Crew Score</h3>
+    <div class="score-display" id="score-display">0</div>
+    <p>Points — complete stops & challenges to earn more</p>
+  </div>
+
+  <!-- TRANSPORT CARDS -->
+  <div class="section-label">🚕 Getting to the Southernmost Point</div>
+  <div class="transport-grid">
+    <div class="transport-card">
+      <span class="transport-icon">🚕</span>
+      <div class="transport-title">Uber / Lyft</div>
+      <span class="transport-badge badge-rec">⭐ Recommended</span>
+      <div class="transport-desc">Fastest & easiest. Door to door from Pier B. ~5 min ride.</div>
+      <div class="transport-cost">~$8–12 split 4 ways</div>
+    </div>
+    <div class="transport-card">
+      <span class="transport-icon">🚌</span>
+      <div class="transport-title">Duval Loop Bus</div>
+      <span class="transport-badge badge-free">Free</span>
+      <div class="transport-desc">Free city bus, stops right at Southernmost Point. Runs every 15–30 min. Look for the green bus near the port entrance.</div>
+      <div class="transport-cost">Free 🎉</div>
+    </div>
+    <div class="transport-card">
+      <span class="transport-icon">🛺</span>
+      <div class="transport-title">Golf Cart</div>
+      <span class="transport-badge badge-fun">Most Fun</span>
+      <div class="transport-desc">Rent near the port. Great for cruising Duval in style. Watch the one-way streets!</div>
+      <div class="transport-cost">~$50–80/hr (4-person)</div>
+    </div>
+  </div>
+
+  <!-- STOPS -->
+  <div class="section-label">📍 The Crawl</div>
+
+  <!-- STOP 1 -->
+  <div class="stop-card" id="card-1">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #FFD166, #FF5C5C);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(1, 50, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">9:45 AM</span>
+          <span class="stop-emoji">📍</span>
+          <span class="stop-name">Southernmost Point</span>
+          <span class="stop-type">Landmark</span>
+        </div>
+        <p class="stop-desc">The iconic red & black buoy — 90 miles from Cuba. Hit it early before the tourist crush. Perfect group photo moment to kick off the day.</p>
+        <div class="stop-tags">
+          <span class="tag tag-free">Free</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=17963527835743759953" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">📸</span>
+          <span><strong>Photo Challenge:</strong> Get all 4 of you jumping in the same shot at the buoy. No one's feet on the ground!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 2 -->
+  <div class="stop-card" id="card-2">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #9B5DE5, #FF85A1);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(2, 75, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">10:15 AM</span>
+          <span class="stop-emoji">🏠</span>
+          <span class="stop-name">Hemingway Home</span>
+          <span class="stop-type">Museum</span>
+        </div>
+        <p class="stop-desc">Ernest Hemingway's legendary estate. 60+ six-toed cats roam free. Guided tours run every 15 min — arrive at open to dodge lines.</p>
+        <div class="stop-order">🎟️ $19/person — pay at door, no reservations needed</div>
+        <div class="stop-tags">
+          <span class="tag tag-paid">$19 Admission</span>
+          <span class="tag tag-card">Cards OK</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=1415295213372393962" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">🐱</span>
+          <span><strong>Cat Count Challenge:</strong> Before the tour, everyone guesses how many cats you'll spot. Write down your guesses — whoever gets closest wins the title of Official Cat Whisperer of the crew.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 3 -->
+  <div class="stop-card" id="card-3">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #06B6A4, #FFD166);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(3, 75, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">11:15 AM</span>
+          <span class="stop-emoji">🟢</span>
+          <span class="stop-name">Green Parrot Bar</span>
+          <span class="stop-type">Bar · Since 1890</span>
+        </div>
+        <p class="stop-desc">Florida's oldest bar and a Key West icon. No pretense, just great vibes, live music, and free popcorn. Locals favorite since 1890.</p>
+        <div class="stop-order">🍹 Order: Key Lime Margarita — fans call it the best in Key West</div>
+        <div class="stop-tags">
+          <span class="tag tag-free">No Cover</span>
+          <span class="tag tag-music">Live Music</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=1726477567258437699" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">🎶</span>
+          <span><strong>Music Challenge:</strong> If there's live music, everyone has to dance for at least 60 seconds — no excuses. Someone's filming.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 4 -->
+  <div class="stop-card" id="card-4">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #FF5C5C, #FF85A1);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(4, 75, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">12:00 PM</span>
+          <span class="stop-emoji">🏴‍☠️</span>
+          <span class="stop-name">Captain Tony's Saloon</span>
+          <span class="stop-type">Bar · Historic</span>
+        </div>
+        <p class="stop-desc">The OG Sloppy Joe's — where Hemingway actually drank. Dollar bills and bras on the ceiling, a hanging tree in the middle of the bar. Pure Key West legend.</p>
+        <div class="stop-order">🍹 Order: Pirate's Punch — the house signature</div>
+        <div class="stop-tags">
+          <span class="tag tag-cash">💵 Bring Cash</span>
+          <span class="tag tag-music">Live Music</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=4009881487394527424" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">🩲</span>
+          <span><strong>Tradition Challenge:</strong> Leave something on the hanging tree — a dollar bill with all your names, or follow the local tradition. You'll know when you see it.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 5 -->
+  <div class="stop-card" id="card-5">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #FFD166, #FF5C5C);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(5, 100, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">12:45 PM</span>
+          <span class="stop-emoji">🦞</span>
+          <span class="stop-name">DJ's Clam Shack</span>
+          <span class="stop-type">Food · 4.7★</span>
+        </div>
+        <p class="stop-desc">Featured on Diners, Drive-Ins & Dives. Maine lobster, never frozen. The lobster rolls here are legitimately the best on the island — don't skip.</p>
+        <div class="stop-order">🦞 Order: Maine Lobster Roll ($24) or Overstuffed ($39) + conch fritters</div>
+        <div class="stop-tags">
+          <span class="tag tag-card">Cards OK</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=12412584068352783517" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">🦞</span>
+          <span><strong>Menu Roulette:</strong> Everyone orders something they've never tried before — no defaults! First person done eating gets to <strong>unlock a bonus stop</strong> 🔓 — check the Bonus Challenges tab for the secret spot.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 6 -->
+  <div class="stop-card" id="card-6">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #FF85A1, #9B5DE5);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(6, 50, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">1:45 PM</span>
+          <span class="stop-emoji">🌿</span>
+          <span class="stop-name">The Cannabis Bar</span>
+          <span class="stop-type">Shop · 4.8★</span>
+        </div>
+        <p class="stop-desc">Hemp-derived products right on Duval — no medical card needed, just a valid ID. THCa, Delta 8, edibles, CBD drinks, and cold beer. Reviewers rave about the staff and vibes.</p>
+        <div class="stop-order">🌿 No card required — 21+ ID only. Ask about edibles for the ship!</div>
+        <div class="stop-tags">
+          <span class="tag tag-id21">21+ ID Required</span>
+          <span class="tag tag-card">Cards OK</span>
+        </div>
+        <a class="map-link" href="https://www.google.com/maps/search/Cannabis+Bar+221+Duval+St+Key+West" target="_blank">📍 Open in Maps ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 7 -->
+  <div class="stop-card" id="card-7">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #FFD166, #06B6A4);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(7, 50, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">2:15 PM</span>
+          <span class="stop-emoji">🍋</span>
+          <span class="stop-name">Kermit's Key Lime Pie</span>
+          <span class="stop-type">Bakery · Iconic</span>
+        </div>
+        <p class="stop-desc">30+ year Key West institution. Get the chocolate-dipped frozen bar on a stick — it's the move. Sample everything first, buy what you love.</p>
+        <div class="stop-order">🍋 Order: Chocolate-dipped frozen key lime bar on a stick</div>
+        <div class="stop-tags">
+          <span class="tag tag-card">Cards OK</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=177049279134278191" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">🍋</span>
+          <span><strong>Taste Test:</strong> Eyes closed, everyone rates the key lime bar on a scale of 1–10 out loud at the same time. No peeking at each other's reactions!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="transit-line"></div>
+
+  <!-- STOP 8 -->
+  <div class="stop-card" id="card-8">
+    <div class="stop-accent" style="background: linear-gradient(to bottom, #FF5C5C, #FFD166);"></div>
+    <div class="stop-inner">
+      <label class="stop-check">
+        <input type="checkbox" onchange="checkStop(8, 100, this)">
+        <div class="check-box">✓</div>
+      </label>
+      <div class="stop-content">
+        <div class="stop-header">
+          <span class="stop-time">2:35 PM</span>
+          <span class="stop-emoji">🇨🇺</span>
+          <span class="stop-name">El Meson de Pepe</span>
+          <span class="stop-type">Cuban · Live Salsa</span>
+        </div>
+        <p class="stop-desc">Live salsa band, waterfront patio on Mallory Square, authentic Cuban food & cocktails. The perfect way to close out the crawl — 5-min walk to the ship from here.</p>
+        <div class="stop-order">🍹 Order: Mojito or margarita + Cuban sandwich or ropa vieja. Dance. Obviously.</div>
+        <div class="stop-tags">
+          <span class="tag tag-music">🎺 Live Salsa</span>
+          <span class="tag tag-card">Cards OK</span>
+        </div>
+        <a class="map-link" href="https://maps.google.com/?cid=12135720618860736541" target="_blank">📍 Open in Maps ↗</a>
+        <div class="challenge-banner">
+          <span class="ch-icon">💃</span>
+          <span><strong>Final Boss Challenge:</strong> The crew has to recreate a group TikTok-style video to whatever the salsa band is playing — even if it's just vibing and pointing. Most dramatic performance wins. Carolina picks the winner since it's her birthday! 🎂</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSIT HOME -->
+  <div class="transit">
+    <span>🚢</span>
+    <span>~5 min walk north to Pier B · Aim to be on board by <strong style="color: var(--coral)">4:00 PM</strong></span>
+  </div>
+
+  <!-- COMPLETION BANNER -->
+  <div class="complete-banner" id="complete-banner">
+    <h2>🎉 CRAWL COMPLETE! 🎉</h2>
+    <p>You did it, crew! See you back on the ship for the Scarlett Red themed night 🔴<br>What happens in Key West...</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('challenges')">⭐ Bonus Challenges</button>
+    <button class="tab-btn" onclick="switchTab('notes')">📋 Quick Notes</button>
+  </div>
+
+  <!-- TAB: BONUS CHALLENGES -->
+  <div class="tab-panel active" id="tab-challenges">
+    <p style="font-size:12px; color: rgba(255,248,240,0.45); margin-bottom:14px; letter-spacing:0.5px;">Tap to mark complete — each earns bonus points toward the crew leaderboard 🏆</p>
+    <div class="challenges-grid">
+      <div class="challenge-card" onclick="toggleChallenge(this, 25)">
+        <div class="ch-pts">+25 PTS</div>
+        <div class="ch-title">🐓 Rooster Photo</div>
+        <div class="ch-desc">Get a photo with one of Key West's famous feral roosters. No chasing allowed.</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 25)">
+        <div class="ch-pts">+25 PTS</div>
+        <div class="ch-title">🌊 Southernmost Selfie</div>
+        <div class="ch-desc">All four of you in frame with the ocean visible. Has to go on someone's story.</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 50)">
+        <div class="ch-pts">+50 PTS</div>
+        <div class="ch-title">💃 Dance With Someone</div>
+        <div class="ch-desc">Get someone — a local, a fellow tourist, anyone — to dance with you at El Meson. Video proof. Extra points for style. 🎺</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 25)">
+        <div class="ch-pts">+25 PTS</div>
+        <div class="ch-title">🍹 Full Passport</div>
+        <div class="ch-desc">Everyone orders a different drink at the same stop — no duplicates allowed.</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 50)">
+        <div class="ch-pts">+50 PTS</div>
+        <div class="ch-title">🗺️ Full Crawl</div>
+        <div class="ch-desc">Complete all 8 stops and make it back to the ship before 4pm. Legend status.</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 25)">
+        <div class="ch-pts">+25 PTS</div>
+        <div class="ch-title">📍 Mile Marker 0</div>
+        <div class="ch-desc">Find the Mile Marker 0 sign on Whitehead St. Photo or it didn't happen.</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 25)">
+        <div class="ch-pts">+25 PTS</div>
+        <div class="ch-title">😂 Strangest Encounter</div>
+        <div class="ch-desc">Screenshot or describe the wildest thing you saw in Key West. Group vote decides winner.</div>
+      </div>
+      <div class="challenge-card" onclick="toggleChallenge(this, 50)">
+        <div class="ch-pts">+50 PTS</div>
+        <div class="ch-title">🦩 Crew Photo Wall</div>
+        <div class="ch-desc">Get a group photo at every single stop. Send them all to the group chat before midnight.</div>
+      </div>
+      <div class="challenge-card" id="bonus-spot-card" onclick="toggleChallenge(this, 75)" style="grid-column: span 2; border-color: rgba(255,190,0,0.35); background: rgba(255,190,0,0.06);">
+        <div class="ch-pts" style="color: var(--gold);">🔓 UNLOCKABLE · +75 PTS</div>
+        <div class="ch-title">🍺 Bonus Stop: Sloppy Joe's</div>
+        <div class="ch-desc">Unlock this by winning Menu Roulette at DJ's Clam Shack! The most famous bar in Key West — neon lights, live rock, and the original Sloppy Joe sandwich. Squeeze it in between stops 5 and 6 if the energy is right. 410 Duval St.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: QUICK NOTES -->
+  <div class="tab-panel" id="tab-notes">
+    <div class="tip-box">
+      <strong>💵 Cash Warning:</strong> Captain Tony's has a card surcharge — bring some cash. ATMs are on Duval St if needed.
+    </div>
+    <div class="tip-box">
+      <strong>🌿 Cannabis Bar Note:</strong> Florida is medical-only for dispensaries, but The Cannabis Bar sells hemp-derived products (THCa, Delta 8, CBD) to anyone 21+ with valid ID — no medical card needed.
+    </div>
+    <div class="tip-box">
+      <strong>🏠 Hemingway Home:</strong> $19/person, pay at the door. No reservations needed but arrive right at 9am open to beat the lines. Tours run every 15 min.
+    </div>
+    <div class="tip-box">
+      <strong>🦞 DJ's Clam Shack Hours:</strong> Opens 11am on Fridays. Don't arrive too early or you'll be waiting outside!
+    </div>
+    <div class="tip-box">
+      <strong>⏰ Ship Cutoff:</strong> Aim to leave El Meson by 3:20pm. It's a 5–10 min walk back to Pier B. Ship departs at 5pm but we want everyone back by 4pm. Don't be the reason we miss the boat! 🚢
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">Carolina's Birthday Duval Crawl 🦩 · Virgin Voyages · June 5, 2025 · Key West Port Day</div>
+
+<script>
+  function switchTab(name) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  let score = 0;
+  let stopsComplete = 0;
+  const TOTAL_STOPS = 8;
+
+  const STOP_POINTS = {1:50, 2:75, 3:75, 4:75, 5:100, 6:50, 7:50, 8:100};
+
+  function checkStop(num, pts, checkbox) {
+    const card = document.getElementById('card-' + num);
+    if (checkbox.checked) {
+      card.classList.add('done', 'just-checked');
+      score += pts;
+      stopsComplete++;
+      setTimeout(() => card.classList.remove('just-checked'), 600);
+      showToast('Stop #' + num + ' done! +' + pts + ' pts 🎉');
+      if (stopsComplete === TOTAL_STOPS) {
+        setTimeout(showComplete, 500);
+      }
+    } else {
+      card.classList.remove('done');
+      score -= pts;
+      stopsComplete--;
+      document.getElementById('complete-banner').style.display = 'none';
+    }
+    updateScore();
+    updateProgress();
+  }
+
+  function toggleChallenge(card, pts) {
+    if (card.classList.contains('ch-done')) {
+      card.classList.remove('ch-done');
+      score -= pts;
+      showToast('Challenge removed · -' + pts + ' pts');
+    } else {
+      card.classList.add('ch-done');
+      score += pts;
+      showToast('Challenge complete! +' + pts + ' pts ✨');
+      burst();
+    }
+    updateScore();
+  }
+
+  function updateScore() {
+    document.getElementById('score-display').textContent = score;
+  }
+
+  function updateProgress() {
+    const pct = Math.round((stopsComplete / TOTAL_STOPS) * 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('prog-text').textContent = stopsComplete + ' of ' + TOTAL_STOPS + ' stops';
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  function showComplete() {
+    const banner = document.getElementById('complete-banner');
+    banner.style.display = 'block';
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    burst();
+    setTimeout(burst, 400);
+    setTimeout(burst, 800);
+  }
+
+  function burst() {
+    const container = document.getElementById('confetti');
+    container.style.display = 'block';
+    const colors = ['#FFD166','#FF5C5C','#06B6A4','#FF85A1','#9B5DE5'];
+    for (let i = 0; i < 40; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.cssText = [
+        'left:' + Math.random() * 100 + 'vw',
+        'top: -10px',
+        'background:' + colors[Math.floor(Math.random() * colors.length)],
+        'animation-duration:' + (1.5 + Math.random()) + 's',
+        'animation-delay:' + Math.random() * 0.5 + 's',
+        'transform: rotate(' + Math.random() * 360 + 'deg)',
+        'border-radius:' + (Math.random() > 0.5 ? '50%' : '2px')
+      ].join(';');
+      container.appendChild(piece);
+    }
+    setTimeout(() => {
+      container.innerHTML = '';
+      container.style.display = 'none';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
